@@ -69,3 +69,14 @@ def favorite_city_detail(request, pk):
     elif request.method == 'DELETE':
         city.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+from django.http import JsonResponse
+
+def home_view(request):
+    return JsonResponse({
+        "message": "Welcome to Nimbus Weather API 🌩️",
+        "available_endpoints": {
+            "weather": "/api/weather/<city>/",
+            "favorites": "/api/favorites/"
+        }
+    })
